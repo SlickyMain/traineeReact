@@ -17,7 +17,7 @@ export default function Login(props) {
             </div>
             <div className="forButton d-flex justify-content-center mb-3">
                 <button type="submit" className="registerButton">
-                    <a href="#" className="buttonText p-2">
+                    <a href="#" className="buttonText p-2" onClick={props.callColor}>
                         Войти
                     </a>
                 </button>

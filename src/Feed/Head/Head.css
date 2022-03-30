@@ -1,0 +1,9 @@
+.topAct {
+    display: flex;
+    justify-content: end;
+}
+
+.topLink {
+    padding: 0px 15px;
+    text-decoration: none;
+}
