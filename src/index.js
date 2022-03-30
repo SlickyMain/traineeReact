@@ -4,10 +4,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Enter from './Enter/Enter';
+import { BrowserRouter } from "react-router-dom"
 
 ReactDOM.render(
   <React.StrictMode>
-    <Enter />
+    <BrowserRouter>
+      <Enter />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
