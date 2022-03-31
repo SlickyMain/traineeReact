@@ -13,6 +13,6 @@
     opacity: 1;
 }
 #errorField.hide {
-    transform: translate(100px, 0);
+    transform: translate(0, -100px);
     opacity: 0;
 }

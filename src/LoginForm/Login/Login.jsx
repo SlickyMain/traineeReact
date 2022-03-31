@@ -9,10 +9,10 @@ export default function Login(props) {
     const handleChanges = (event) => {
         let targetField = event.target.name
         let targetValue = event.target.value
-        if (targetField == "login") {
+        if (targetField === "login") {
             setEmailValue(targetValue)
         }
-        else if (targetField == "password") {
+        else if (targetField === "password") {
             setPasswordValue(targetValue)
         }
     }

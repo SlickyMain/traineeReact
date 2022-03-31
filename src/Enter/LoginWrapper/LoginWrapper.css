@@ -75,6 +75,12 @@
     border-radius: 5px;
     border: 0px;
   }
+
+  .redirectButton {
+    background-color: #FBBC04;
+    text-decoration: underline;
+    border: 0px;
+  }
   
   .buttonText {
     font-size: 20px;

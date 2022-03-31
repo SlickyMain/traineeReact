@@ -35,8 +35,8 @@ export default function LoginWrapper(props) {
                                 </p>
                             </div>
                             <div className="row mt-1">
-                                <p className="altText">
-                                    <button onClick={redirect}>{buttonText}</button>
+                                <p className="altText d-flex justify-content-center">
+                                    <button className='redirectButton' onClick={redirect}>{buttonText}</button>
                                 </p>
                             </div>
                         </div>
