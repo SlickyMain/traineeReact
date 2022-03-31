@@ -32,6 +32,16 @@ const Post = (props) => {
         }
     }
 
+    const openComments = () => {
+        props.setCommentsToOpen(true)
+        props.setPostDescribe({
+            pk: props.values.pk, 
+            author: props.author,
+            author_name: props.author_name,
+            text: props.text
+        })
+    }
+
     return (
         <div className="postInstance">
             <div className="row mx-1">
@@ -80,7 +90,7 @@ const Post = (props) => {
                 <p className="" id="postText">{props.values.text}</p>
             </div>
             <div className="row mx-1 mb-5">
-                <a className="usualGrey popupLink" href="#pops">Все комментарии ({props.values.comments})</a>
+                <a className="usualGrey popupLink" onClick={openComments} href="#pops">Все комментарии ({props.values.comments})</a>
             </div>
         </div>
     )
