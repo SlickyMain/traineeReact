@@ -10,7 +10,7 @@ export default function Enter(props) {
         <div>
             <Routes>
                 <Route path="/feed" element={<Feed />} />
-                <Route path="*" element={<LoginWrapper />} />
+                <Route path="/" element={<LoginWrapper />} />
             </Routes>
         </div>
     )

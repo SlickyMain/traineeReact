@@ -1,0 +1,18 @@
+#errorField {
+    font-size: 18px;
+    padding: 0px 15px 5px 15px;
+    color: red;
+    font-weight: 700;
+    white-space: normal;
+    transition: all 0.5s;
+    min-height: 54px;
+}
+
+#errorField.show {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+#errorField.hide {
+    transform: translate(100px, 0);
+    opacity: 0;
+}
