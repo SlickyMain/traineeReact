@@ -10,7 +10,6 @@ const Posts = (props) => {
     const [commentsIsOpen, setCommentsToOpen] = useState(false)
     const [postDescribe, setPostDescribe] = useState({})
     const token = localStorage.getItem("token") || null
-    console.log(comments)
 
     useEffect(() => {
         fetch(`/api/v1/post_list/`, {

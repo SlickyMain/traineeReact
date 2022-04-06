@@ -6,12 +6,6 @@
     border-radius: 4px;
 }
 
-#forUsername {
-    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: larger;
-    margin-left: 3px;
-}
-
 #forTextComm {
     white-space: normal;
 }

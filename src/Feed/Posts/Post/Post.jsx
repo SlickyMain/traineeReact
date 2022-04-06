@@ -52,9 +52,9 @@ const Post = (props) => {
         props.setCommentsToOpen(true)
         props.setPostDescribe({
             pk: props.values.pk, 
-            author: props.author,
-            author_name: props.author_name,
-            text: props.text
+            author: props.values.author,
+            author_name: props.values.author_name,
+            text: props.values.text
         })
         let comments = await downloadComments()
         props.setComments(comments)
