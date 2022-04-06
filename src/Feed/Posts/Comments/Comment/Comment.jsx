@@ -26,10 +26,13 @@ function Comment(props) {
     }
 
     const Childs = () => {
-        if (props.childrens && props.childrens.length > 0) {
-            return props.childrens.map(children => {
-                return <Comment key={children.comment_id} parent={children.parent_comment} text={children.text} user={children.user} username={children.username}
-                    date={children.date_of_comment} />
+        if (props.comments && props.comments.length > 0) {
+            return props.comments.map(children => {
+                return children.parent_comment === props.key ?
+                    <Comment key={children.comment_id} parent={children.parent_comment} text={children.text}
+                             user={children.user} username={children.username} date={children.date_of_comment}
+                    />
+                    : ""
             })
         }
         else {

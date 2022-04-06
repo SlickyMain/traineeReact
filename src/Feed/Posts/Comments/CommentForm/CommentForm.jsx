@@ -33,7 +33,7 @@ function CommentForm(props) {
 
     return (
         <div>
-            <div className="row gx-0 commentForm" >
+            <div className={`row gx-0 commentForm ${props.openClass}`} >
                 <div className="col-sm-12 col-xl-8 offset-xl-1">
                     <div className="row gx-0 mb-2 replyWindow">
                         <div className="col-10" id="spaceForCommentWhichWeRespond">
