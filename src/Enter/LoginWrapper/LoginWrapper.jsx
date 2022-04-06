@@ -1,17 +1,11 @@
 import './LoginWrapper.css';
-import { useState } from "react"
 import LoginForm from "../../LoginForm/LoginForm"
+import { useLocation } from 'react-router-dom'
 
 
 export default function LoginWrapper(props) {
 
-    const [isLogin, setIsLogin] = useState(true)
-    const [buttonText, setButtonText] = useState("Зарегистрироваться")
-
-    const redirect = () => {
-        setIsLogin(!isLogin)
-        setButtonText(isLogin ? "Войти" : "Зарегистрироваться")
-    }
+    const { state } = useLocation();
 
     return (
         <div className="yellow">
@@ -25,19 +19,7 @@ export default function LoginWrapper(props) {
                     <div className="row formDiv">
                         <div className="authFormMobile d-flex justify-content-center">
                             <div className="col-sm-12 substrate">
-                                <LoginForm isLogin={isLogin} />
-                            </div>
-                        </div>
-                        <div className="altLinks text-center mt-4">
-                            <div className="row">
-                                <p className="altText">
-                                    {isLogin ? "Нет аккаунта?" : "Есть аккаунт?"}
-                                </p>
-                            </div>
-                            <div className="row mt-1">
-                                <p className="altText d-flex justify-content-center">
-                                    <button className='redirectButton' onClick={redirect}>{buttonText}</button>
-                                </p>
+                                <LoginForm message={state} />
                             </div>
                         </div>
                     </div>

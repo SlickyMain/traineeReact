@@ -16,6 +16,7 @@
 .popupHeader {
     background-color: #FFF;
     position: fixed;
+    z-index: -100;
     top: 0;
     left: 0;
     width: 100%;
@@ -31,6 +32,7 @@
 .popupHeader.open {
     position: fixed;
     width: 100%;
+    z-index: 100;
     top: 0;
     left: 0;
     transform: translate(0px, 0px);

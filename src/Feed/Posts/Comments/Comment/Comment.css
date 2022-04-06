@@ -1,0 +1,37 @@
+.miniAvatar {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: #C4C4C4;
+    border-radius: 4px;
+}
+
+#forUsername {
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: larger;
+    margin-left: 3px;
+}
+
+#forTextComm {
+    white-space: normal;
+}
+
+.replyBlock {
+    margin-left: 40px;
+}
+
+.usualGrey {
+    color: #808080;
+}
+
+#forDate {
+    max-width: fit-content;
+}
+
+.replyButton {
+    max-width: fit-content;
+    max-height: 44px;
+    margin-left: 40px;
+    border: 0;
+    background-color: #FFF;
+}

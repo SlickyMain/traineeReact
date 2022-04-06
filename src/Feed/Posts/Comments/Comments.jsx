@@ -1,41 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import "./Comments.css"
+import Comment from './Comment/Comment'
 
 function Comments(props) {
-
-    const [currentComments, setCurrentComments] = useState([])
-    const downloadComments = async () => {
-        return await fetch(`/api/v1/post/${props.postDescribe.pk}/comments/`, {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token"),
-            }
-        })
-        .then(async response => {
-            if (response.ok) {
-                return await response.json()
-            }
-            else {
-                throw new Error(response.status)
-            }
-        })
-    }
 
     if (props.commentsIsOpen) {
         document.getElementById("pops").classList.add("open")
         document.querySelector(".popupHeader").classList.add("open")
         document.querySelector(".commentForm").classList.add("open")
         document.body.classList.add("fixed")
-
-        let comments = downloadComments()
-        if (comments.length > 0) {
-            setCurrentComments(comments)
+        for (let i = 0; i < props.comments.length; i++) {
+            if (props.comments[i].parent_comment) {
+                
+            }
         }
-        else {
-            setCurrentComments([1, 2, 3])
-        }
-        
     }
-
 
     const closeComments = () => {
         props.setCommentsToOpen(false)
@@ -57,7 +36,7 @@ function Comments(props) {
                 <div className="popupBody">
                     <div className="popupContent">
                         <div className="row gx-0">
-                            <div className="col-sm-12 col-xl-8 offset-xl-2">
+                            <div className="col-sm-12 col-xl-6 offset-xl-3">
                                 <div className="postComment border-bottom">
                                     <div className="row">
                                         <div className="d-flex align-items-start">
@@ -71,9 +50,10 @@ function Comments(props) {
                                 </div>
                                 <div id="placeForComms">
                                     {
-                                        currentComments.map(comment => {
-                                            <span>{comment}</span>
-                                        })
+                                        props.comments.map(comment => 
+                                            <Comment key={comment.comment_id} text={comment.text} user={comment.user} username={comment.username} date={comment.date_of_comment}
+                                            parent={comment.parent_comment} />
+                                        )
                                     }
                                 </div>
                             </div>
@@ -82,7 +62,7 @@ function Comments(props) {
                 </div>
             </div>
             <div className="row gx-0 commentForm">
-                <div className="col-sm-12 col-xl-10 offset-xl-1">
+                <div className="col-sm-12 col-xl-8 offset-xl-1">
                     <div className="row gx-0 mb-2 replyWindow">
                         <div className="col-10" id="spaceForCommentWhichWeRespond">
                         </div>
@@ -93,7 +73,7 @@ function Comments(props) {
                         </div>
                     </div>
                     <div className="row gx-0">
-                        <div className="col-10 zIndexFront">
+                        <div className="col-10 zIndexFront pe-2">
                             <textarea name="defaultComment" className="noResize" placeholder="Введите текст комментария"
                                 id="leaveDefaultComment" rows="3"></textarea>
                         </div>

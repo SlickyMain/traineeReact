@@ -1,0 +1,18 @@
+.loader {
+    width: 100px;
+    height: 100px;
+    border: 10px solid rgba(2, 30, 46, 0.7);
+    border-left-color: #FBBC04;
+    border-radius: 50%;
+    animation: loader 1s linear infinite;
+}
+
+@keyframes loader {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.maximum {
+    height: 100vh;
+}

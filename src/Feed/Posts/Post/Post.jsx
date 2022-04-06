@@ -32,7 +32,23 @@ const Post = (props) => {
         }
     }
 
-    const openComments = () => {
+    async function downloadComments() {
+        return fetch(`/api/v1/post/${props.values.pk}/comments/`, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            }
+        })
+            .then(async response => {
+                if (response.ok) {
+                    return await response.json()
+                }
+                else {
+                    throw new Error(response.status)
+                }
+            })
+    }
+
+    const openComments = async () => {
         props.setCommentsToOpen(true)
         props.setPostDescribe({
             pk: props.values.pk, 
@@ -40,6 +56,8 @@ const Post = (props) => {
             author_name: props.author_name,
             text: props.text
         })
+        let comments = await downloadComments()
+        props.setComments(comments)
     }
 
     return (
@@ -51,15 +69,14 @@ const Post = (props) => {
                     <span className="postTag ms-2" id="postAuthor">{props.values.author_name}</span>
                 </div>
                 <div className="dropdown drophidden col-2 d-flex justify-content-end pe-4">
-                    <button className="btn dropdown-toggle" type="button" role="button" id="actionsMenu"
+                    <button className="btn dropdown-toggle" type="button" id="actionsMenu"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         <strong>...</strong>
-
                     </button>
                     <div className="dropdown-menu" aria-labelledby="actionsMenu">
-                        <a className="dropdown-item clearLink" id="editPost" href="#">Редактировать</a>
-                        <a className="dropdown-item clearLink" href="#">Что-нибудь еще</a>
-                        <a className="dropdown-item clearLink" href="#">И что-нибудь еще</a>
+                        <button className="dropdown-item clearButton" id="editPost">Редактировать</button>
+                        <button className="dropdown-item clearButton" >Что-нибудь еще</button>
+                        <button className="dropdown-item clearButton" >И что-нибудь еще</button>
                     </div>
                 </div>
             </div>
