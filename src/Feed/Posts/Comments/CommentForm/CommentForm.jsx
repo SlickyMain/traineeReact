@@ -62,7 +62,10 @@ function CommentForm(props) {
     const closeReplyBlock = () => {
         document.querySelector(".replyWindow").classList.remove("active")
         document.querySelector("#spaceForCloseIcon > button").classList.add("zIndexBack")
-        props.setWannaReply({})
+        setTimeout(() => {
+            props.setWannaReply({})
+        }, 300)
+        
     }
 
     const showReplyBlock = () => {
