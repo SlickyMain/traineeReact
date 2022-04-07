@@ -24,12 +24,13 @@ function Comments(props) {
                 for (let cool of coolComments) {
                     if (cool.parent.comment_id === props.comments[i].parent_comment) {
                         cool.childrens.push(props.comments[i])
+                        break
                     }
                 }
             }
         }
     }
-
+    
     const closeComments = () => {
         props.setCommentsToOpen(false)
         setClearField(true)
@@ -55,7 +56,8 @@ function Comments(props) {
                                 <div id="placeForComms">
                                     {
                                         coolComments.map(comment =>
-                                            <Comment key={comment.parent.comment_id} parentID={comment.parent.comment_id} text={comment.parent.text} user={comment.parent.user} username={comment.parent.username}
+                                            <Comment key={comment.parent.comment_id} parentID={comment.parent.comment_id} text={comment.parent.text} user={comment.parent.user}
+                                             username={comment.parent.username}
                                                 date={comment.parent.date_of_comment} childrens={comment.childrens} setWannaReply={setWannaReply}
                                             />
                                         )
@@ -66,7 +68,8 @@ function Comments(props) {
                     </div>
                 </div>
             </div>
-            <CommentForm needToClear={clearField} wantedToReply={wannaReply} currentPost={props.postDescribe.pk} />
+            <CommentForm needToClear={clearField} wantedToReply={wannaReply} currentPost={props.postDescribe.pk} 
+            setComments={props.setComments} comments={props.comments} setWannaReply={setWannaReply} />
             <div className="row gx-0 popupHeader border-bottom">
                 <div className="col-sm-12 col-xl-8">
                     <div className="d-flex align-items-end mb-2">

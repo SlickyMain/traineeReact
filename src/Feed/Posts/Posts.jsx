@@ -28,6 +28,7 @@ const Posts = (props) => {
             })
     }, [token])
 
+
     return (
         <div className='container gx-0'>
             <div className="row gx-0">
@@ -50,7 +51,8 @@ const Posts = (props) => {
                     }
                 </div>
             </div>
-            <Comments commentsIsOpen={commentsIsOpen} setCommentsToOpen={setCommentsToOpen} postDescribe={postDescribe} comments={comments} />
+            <Comments commentsIsOpen={commentsIsOpen} setCommentsToOpen={setCommentsToOpen} postDescribe={postDescribe} comments={comments}
+            setComments={setComments} />
         </div>
     )
 }

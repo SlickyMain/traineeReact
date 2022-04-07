@@ -3,11 +3,10 @@ import "./Comment.css"
 
 function Comment(props) {
 
-    let classForChild = ""
     let minutes
     let hours
     let days
-    if (props.date) {
+    if (props.date !== "Только что") {
         let parsedDate = Date.now() - Date.parse(new Date(props.date))
         minutes = parsedDate / 1000 / 60
         hours = minutes / 60
@@ -23,7 +22,7 @@ function Comment(props) {
             return <button className="replyButton usualGrey" onClick={replyOnComment}>Ответить</button>
         }
     }
-    
+
     const replyOnComment = () => {
         props.setWannaReply({
             parent_comment: props.parentID,
@@ -51,12 +50,13 @@ function Comment(props) {
                         <p className="miniAvatar me-3">
                         </p>
                         <p>
-                            <strong className="me-1" id="forUsername">{props.username}</strong><span id="forTextComm">{props.text}</span>
+                            <strong className="me-1" id="forUsername">{props.username}:</strong><span id="forTextComm">{props.text}</span>
                         </p>
                     </div>
                 </div>
                 <div className="row replyBlock usualGrey mb-2">
-                    <span className="ps-0" id="forDate">{days > 1 ? Math.ceil(days) + "д" : hours > 1 ? Math.ceil(hours) + "ч" : Math.ceil(minutes) + "м"}</span>
+                    <span className="ps-0" id="forDate">{props.date === "Только что" ? props.date : days > 1 ? Math.ceil(days) + "д" : hours > 1 ?
+                        Math.ceil(hours) + "ч" : Math.ceil(minutes) + "м"}</span>
                     <ReplyOnCommentComponent />
                 </div>
             </div>

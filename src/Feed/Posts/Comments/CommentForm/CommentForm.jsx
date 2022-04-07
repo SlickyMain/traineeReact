@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./CommentForm.css"
+import { getUsername } from "../../../../modules/getUsername"
+import { parseJwt } from "../../../../modules/parseJwt"
 
 function CommentForm(props) {
     const [currentComment, setCurrentComment] = useState("")
@@ -33,19 +35,41 @@ function CommentForm(props) {
                 },
                 body: JSON.stringify(comment)
             })
-            promiseResponse.then(() => {
-            })
+            promiseResponse
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json()
+                    }
+                    else {
+                        console.log(response.statusText)
+                    }
+                })
+                .then(async result => {
+                    let userID = parseJwt(token).id
+                    let username = await getUsername(userID, token)
+                    result.username = username
+                    result.date_of_comment = "Только что"
+                    let newArray = props.comments.slice()
+                    newArray.push(result)
+                    props.setComments(newArray)
+                    setCurrentComment("")
+                    props.setWannaReply({})
+                    closeReplyBlock()
+                })
         }
     }
-
+    
     const closeReplyBlock = () => {
         document.querySelector(".replyWindow").classList.remove("active")
         document.querySelector("#spaceForCloseIcon > button").classList.add("zIndexBack")
+        props.setWannaReply({})
     }
 
     const showReplyBlock = () => {
         document.querySelector(".replyWindow").classList.add("active")
-        document.querySelector(".zIndexBack").classList.remove("zIndexBack")
+        if (document.querySelector(".zIndexBack") != null) {
+            document.querySelector(".zIndexBack").classList.remove("zIndexBack")
+        }
         // parent comment ID = props.wantedToReply.parent_comment
     }
 
@@ -65,7 +89,7 @@ function CommentForm(props) {
                 <div className="col-sm-12 col-xl-8 offset-xl-1">
                     <div className="row gx-0 mb-2 replyWindow">
                         <div className="col-10" id="spaceForCommentWhichWeRespond">
-                            {`Ответить ${props.wantedToReply.user}: ${props.wantedToReply.text}`}
+                            {`Ответить ${props.wantedToReply.user === undefined ? "" : props.wantedToReply.user}: ${props.wantedToReply.text === undefined ? "" : props.wantedToReply.text}`}
                         </div>
                         <div className="col-2" id="spaceForCloseIcon">
                             <button className="beautyIcons zIndexBack" onClick={closeReplyBlock}>
