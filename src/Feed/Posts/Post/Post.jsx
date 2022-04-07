@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "./Post.css"
+import Avatars from '../../Avatars/Avatars'
 
 const Post = (props) => {
     const [likes, setLikes] = useState(props.values.likes)
@@ -64,8 +65,7 @@ const Post = (props) => {
         <div className="postInstance">
             <div className="row mx-1">
                 <div className="col-10 d-flex align-items-center">
-                    <p className="miniAvatar">
-                    </p>
+                    <Avatars userID={props.values.author} />
                     <span className="postTag ms-2" id="postAuthor">{props.values.author_name}</span>
                 </div>
                 <div className="dropdown drophidden col-2 d-flex justify-content-end pe-4">

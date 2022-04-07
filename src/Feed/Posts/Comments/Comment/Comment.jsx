@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Comment.css"
+import Avatars from '../../../Avatars/Avatars'
 
 function Comment(props) {
 
@@ -47,10 +48,9 @@ function Comment(props) {
             <div className={`commElem ${props.parent ? "secondComment" : ""}`}>
                 <div className="row">
                     <div className="d-flex align-items-start">
-                        <p className="miniAvatar me-3">
-                        </p>
+                        <Avatars userID={props.user} />
                         <p>
-                            <strong className="me-1" id="forUsername">{props.username}:</strong><span id="forTextComm">{props.text}</span>
+                            <strong className="me-1 ms-3" id="forUsername">{props.username}:</strong><span id="forTextComm">{props.text}</span>
                         </p>
                     </div>
                 </div>

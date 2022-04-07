@@ -1,0 +1,8 @@
+.miniAvatar {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: #C4C4C4;
+    border-radius: 4px;
+    object-fit: cover;
+}

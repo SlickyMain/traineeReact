@@ -58,7 +58,7 @@ function CommentForm(props) {
                 })
         }
     }
-    
+
     const closeReplyBlock = () => {
         document.querySelector(".replyWindow").classList.remove("active")
         document.querySelector("#spaceForCloseIcon > button").classList.add("zIndexBack")
@@ -70,13 +70,13 @@ function CommentForm(props) {
         if (document.querySelector(".zIndexBack") != null) {
             document.querySelector(".zIndexBack").classList.remove("zIndexBack")
         }
-        // parent comment ID = props.wantedToReply.parent_comment
     }
 
     useEffect(() => {
         if (props.needToClear) {
             setCurrentComment("")
-            closeReplyBlock()
+            document.querySelector(".replyWindow").classList.remove("active")
+            document.querySelector("#spaceForCloseIcon > button").classList.add("zIndexBack")
         }
         if (props.wantedToReply && props.wantedToReply.parent_comment > 0) {
             showReplyBlock()
