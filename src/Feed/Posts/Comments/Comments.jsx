@@ -33,6 +33,7 @@ function Comments(props) {
     const closeComments = () => {
         props.setCommentsToOpen(false)
         setClearField(true)
+        setWannaReply({})
         document.getElementById("pops").classList.remove("open")
         document.querySelector(".popupHeader").classList.remove("open")
         document.querySelector(".commentForm").classList.remove("open") // Элемент вместе с блоком ответа и кнопкой
@@ -65,7 +66,7 @@ function Comments(props) {
                     </div>
                 </div>
             </div>
-            <CommentForm needToClear={clearField} wantedToReply={wannaReply} />
+            <CommentForm needToClear={clearField} wantedToReply={wannaReply} currentPost={props.postDescribe.pk} />
             <div className="row gx-0 popupHeader border-bottom">
                 <div className="col-sm-12 col-xl-8">
                     <div className="d-flex align-items-end mb-2">

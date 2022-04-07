@@ -3,6 +3,7 @@ import "./CommentForm.css"
 
 function CommentForm(props) {
     const [currentComment, setCurrentComment] = useState("")
+    const token = localStorage.getItem("token")
 
     const handleChanges = (event) => {
         let targetValue = event.target.value
@@ -12,19 +13,46 @@ function CommentForm(props) {
     const sendComment = (event) => {
         event.preventDefault()
         if (currentComment) {
-
+            let comment = {
+                text: currentComment
+            }
+            let promiseResponse = props.wantedToReply.parent_comment > 0 ? fetch(`/api/v1/post/${props.currentPost}/comment/${props.wantedToReply.parent_comment}/`, {
+                method: "POST",
+                headers: {
+                    Authorization: "Bearer " + token,
+                    "Content-type": "application/json; charset=utf-8",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify(comment)
+            }) : fetch(`/api/v1/post/${props.currentPost}/comment/`, {
+                method: "POST",
+                headers: {
+                    Authorization: "Bearer " + token,
+                    'Content-Type': 'application/json;charset=utf-8',
+                    Accept: "application/json"
+                },
+                body: JSON.stringify(comment)
+            })
+            promiseResponse.then(() => {
+            })
         }
     }
 
-    let replyWindowActive = document.querySelector(".replyWindow")
+    const closeReplyBlock = () => {
+        document.querySelector(".replyWindow").classList.remove("active")
+        document.querySelector("#spaceForCloseIcon > button").classList.add("zIndexBack")
+    }
+
     const showReplyBlock = () => {
-        replyWindowActive.classList.add("active")
+        document.querySelector(".replyWindow").classList.add("active")
+        document.querySelector(".zIndexBack").classList.remove("zIndexBack")
         // parent comment ID = props.wantedToReply.parent_comment
     }
 
     useEffect(() => {
         if (props.needToClear) {
             setCurrentComment("")
+            closeReplyBlock()
         }
         if (props.wantedToReply && props.wantedToReply.parent_comment > 0) {
             showReplyBlock()
@@ -40,7 +68,7 @@ function CommentForm(props) {
                             {`Ответить ${props.wantedToReply.user}: ${props.wantedToReply.text}`}
                         </div>
                         <div className="col-2" id="spaceForCloseIcon">
-                            <button className="beautyIcons zIndexBack">
+                            <button className="beautyIcons zIndexBack" onClick={closeReplyBlock}>
                                 <img src="http://localhost:8000/static/assets/Close.svg" width="30px" height="30px" alt="" />
                             </button>
                         </div>
@@ -51,7 +79,7 @@ function CommentForm(props) {
                                 id="leaveDefaultComment" rows="3"></textarea>
                         </div>
                         <div className="col-2 d-flex align-items-center justify-content-center pb-2 pe-1 zIndexFront">
-                            <button className="commentsButton beautyIcons">
+                            <button className="commentsButton beautyIcons" onClick={sendComment}>
                                 <img src="http://localhost:8000/static/assets/Send.svg" width="30px" height="30px" alt="" />
                             </button>
                         </div>

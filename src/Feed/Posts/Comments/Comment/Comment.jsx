@@ -13,10 +13,17 @@ function Comment(props) {
         hours = minutes / 60
         days = hours / 24
     }
-    if (props.parent) {
-        classForChild = "secondComment"
-    }
 
+
+    const ReplyOnCommentComponent = () => {
+        if (props.parent) {
+            return null
+        }
+        else {
+            return <button className="replyButton usualGrey" onClick={replyOnComment}>Ответить</button>
+        }
+    }
+    
     const replyOnComment = () => {
         props.setWannaReply({
             parent_comment: props.parentID,
@@ -38,7 +45,7 @@ function Comment(props) {
     }
     return (
         <div>
-            <div className={`commElem ${classForChild}`}>
+            <div className={`commElem ${props.parent ? "secondComment" : ""}`}>
                 <div className="row">
                     <div className="d-flex align-items-start">
                         <p className="miniAvatar me-3">
@@ -50,7 +57,7 @@ function Comment(props) {
                 </div>
                 <div className="row replyBlock usualGrey mb-2">
                     <span className="ps-0" id="forDate">{days > 1 ? Math.ceil(days) + "д" : hours > 1 ? Math.ceil(hours) + "ч" : Math.ceil(minutes) + "м"}</span>
-                    <button className="replyButton usualGrey" onClick={replyOnComment}>Ответить</button>
+                    <ReplyOnCommentComponent />
                 </div>
             </div>
             <Childs />
