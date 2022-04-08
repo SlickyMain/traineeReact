@@ -13,10 +13,11 @@ function MagicLink(props) {
         if (Date.now() / 1000 - decodedTokenCreated < 300) {
             localStorage.setItem("token", magicLinkToken)
             if (props.isLogin) {
-                window.location.assign("/")
+                navigation("/")
             }
             else {
                 window.location.assign("/welcome")
+                navigation("/welcome")
             }
         }
         else {

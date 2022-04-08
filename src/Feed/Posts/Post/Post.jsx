@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./Post.css"
 import Avatars from '../../Avatars/Avatars'
+import MakeLinkToTrendIfTag from './MakeLinkToTrendIfTag'
 
 const Post = (props) => {
     const [likes, setLikes] = useState(props.values.likes)
@@ -52,7 +53,7 @@ const Post = (props) => {
     const openComments = async () => {
         props.setCommentsToOpen(true)
         props.setPostDescribe({
-            pk: props.values.pk, 
+            pk: props.values.pk,
             author: props.values.author,
             author_name: props.values.author_name,
             text: props.values.text
@@ -104,7 +105,9 @@ const Post = (props) => {
             </div>
 
             <div className="row mx-1">
-                <p className="" id="postText">{props.values.text}</p>
+                <p id="postText">
+                    <MakeLinkToTrendIfTag text={props.values.text} />
+                </p>
             </div>
             <div className="row mx-1 mb-5">
                 <a className="usualGrey popupLink" onClick={openComments} href="#pops">Все комментарии ({props.values.comments})</a>

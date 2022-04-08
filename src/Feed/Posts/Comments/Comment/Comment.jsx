@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Comment.css"
 import Avatars from '../../../Avatars/Avatars'
+import MakeLinkToTrendIfTag from '../../Post/MakeLinkToTrendIfTag'
 
 function Comment(props) {
 
@@ -49,8 +50,10 @@ function Comment(props) {
                 <div className="row">
                     <div className="d-flex align-items-start">
                         <Avatars userID={props.user} />
-                        <p>
-                            <strong className="me-1 ms-3" id="forUsername">{props.username}:</strong><span id="forTextComm">{props.text}</span>
+                        <p className="me-1 ms-3">
+                            <strong id="forUsername">{props.username}:</strong><span id="forTextComm">
+                                <MakeLinkToTrendIfTag text={props.text} />
+                            </span>
                         </p>
                     </div>
                 </div>

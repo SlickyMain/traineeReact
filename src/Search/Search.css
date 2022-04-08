@@ -1,0 +1,13 @@
+.nav-tabs {
+    border: none;
+}
+
+.nav-link {
+    color: black;
+}
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus, .nav-link.selected {
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+}

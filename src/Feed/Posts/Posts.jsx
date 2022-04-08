@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Comments from './Comments/Comments'
 import Post from './Post/Post'
+import BottomPanel from '../../BottomPanel/BottomPanel'
 import "./Posts.css"
 
 const Posts = (props) => {
@@ -12,7 +13,7 @@ const Posts = (props) => {
     const token = localStorage.getItem("token") || null
 
     useEffect(() => {
-        fetch(`/api/v1/post_list/`, {
+        fetch(props.destination, {
             headers: {
                 Authorization: token ? "Bearer " + token : null,
                 'Content-Type': 'application/json;charset=utf-8'
@@ -26,7 +27,7 @@ const Posts = (props) => {
             .then(result => {
                 setPosts(result)
             })
-    }, [token])
+    }, [token, props.destination])
 
 
     return (
@@ -53,6 +54,7 @@ const Posts = (props) => {
             </div>
             <Comments commentsIsOpen={commentsIsOpen} setCommentsToOpen={setCommentsToOpen} postDescribe={postDescribe} comments={comments}
             setComments={setComments} />
+            <BottomPanel />
         </div>
     )
 }
