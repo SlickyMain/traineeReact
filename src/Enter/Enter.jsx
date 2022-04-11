@@ -6,6 +6,7 @@ import LoginWrapper from './LoginWrapper/LoginWrapper';
 import MagicLink from './MagicLink/MagicLink';
 import Search from '../Search/Search';
 import Profile from '../Profile/Profile';
+import Trend from '../Trend/Trend';
 
 export default function Enter(props) {
 
@@ -17,7 +18,8 @@ export default function Enter(props) {
                 <Route path='/magic_link/login/*' element={<MagicLink isLogin={true} />} />
                 <Route path='/magic_link/registration/*' element={<MagicLink isLogin={false} />} />
                 <Route path='/search' element={<Search />} />
-                <Route path='profile/*' element={<Profile />} />
+                <Route path='/profile/*' element={<Profile />} />
+                <Route path='/trend/*' element={<Trend />} />
             </Routes>
         </div>
     )

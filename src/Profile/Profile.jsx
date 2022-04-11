@@ -90,7 +90,7 @@ function Profile() {
                     </div>
                 </div>
                 <div className="row gx-0 justify-content-center">
-                    <div className="col-6 d-flex justify-content-center p-3">
+                    <div className="col-6 d-flex justify-content-center p-1">
                         <button id="toGrid" className={`beautyIcons m-2 ${buttonsState[0]}`} onClick={changeGrid}>
                             <img src="/static/assets/GridOn.svg" width="30px" height="30px" className="my-1 mx-2" alt="" />
                         </button>

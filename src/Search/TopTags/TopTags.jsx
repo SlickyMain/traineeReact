@@ -23,29 +23,36 @@ function TopTags({ destination }) {
                 }
             })
         setTopTagsNow(tagsHere)
-    }, [destination])
+    }, [token, setTopTagsNow])
 
     const UnpackPictures = (props) => {
+        let canChanges = true
         const [arrayPictures, setArrayPictures] = useState([])
 
         useEffect(async () => {
-            await fetch(`/api/v1/post_list/${props.currentTrend}`, {
-                headers: {
-                    Authorization: "Bearer " + token,
-                    'Content-Type': 'application/json;charset=utf-8'
-                }
-            })
-                .then(async response => {
-                    if (response.ok) {
-                        let result = await response.json()
-                        result = result.splice(0, 6)
-                        setArrayPictures(result)
-                    }
-                    else {
-                        throw new Error(response.statusText)
+            if (canChanges) {
+                await fetch(`/api/v1/post_list/${props.currentTrend}`, {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                        'Content-Type': 'application/json;charset=utf-8'
                     }
                 })
-        }, [props.currentTrend, props])
+                    .then(async response => {
+                        if (response.ok) {
+                            let result = await response.json()
+                            result = result.splice(0, 6)
+                            setArrayPictures(result)
+                        }
+                        else {
+                            throw new Error(response.statusText)
+                        }
+                    })
+            }
+
+            return () => {
+                canChanges = false
+            }
+        }, [props.currentTrend])
 
         return (
             <div className={`gridFor${arrayPictures.length}`}>
