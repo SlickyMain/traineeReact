@@ -6,31 +6,34 @@ import MakeLinkToTrendIfTag from './MakeLinkToTrendIfTag'
 const Post = (props) => {
     const [likes, setLikes] = useState(props.values.likes)
     const [hasLike, setHasLike] = useState(props.values.current_user_rate)
+    const token = localStorage.getItem("token") || null
 
     let likeButtonSource = hasLike ? "http://localhost:8000/static/assets/heart_f.svg" : "http://localhost:8000/static/assets/heart_e.svg"
 
     const sendLike = () => {
-        if (hasLike) {
-            setHasLike(0)
-            setLikes(likes - 1)
-            fetch(`/api/v1/post/${props.values.pk}/like/up/`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem("token"),
-                    'Content-Type': 'application/json;charset=utf-8'
-                }
-            })
-        }
-        else {
-            setHasLike(1)
-            setLikes(likes + 1)
-            fetch(`/api/v1/post/${props.values.pk}/like/up/`, {
-                method: "POST",
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem("token"),
-                    'Content-Type': 'application/json;charset=utf-8'
-                }
-            })
+        if (token) {
+            if (hasLike) {
+                setHasLike(0)
+                setLikes(likes - 1)
+                fetch(`/api/v1/post/${props.values.pk}/like/up/`, {
+                    method: "DELETE",
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem("token"),
+                        'Content-Type': 'application/json;charset=utf-8'
+                    }
+                })
+            }
+            else {
+                setHasLike(1)
+                setLikes(likes + 1)
+                fetch(`/api/v1/post/${props.values.pk}/like/up/`, {
+                    method: "POST",
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem("token"),
+                        'Content-Type': 'application/json;charset=utf-8'
+                    }
+                })
+            }
         }
     }
 

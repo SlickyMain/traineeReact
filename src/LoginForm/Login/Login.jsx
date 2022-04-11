@@ -96,12 +96,12 @@ export default function Login(props) {
 
     return (
         <div>
-            <form autoComplete="off" action="#" onInvalid={endOfWarning} className="mt-5">
-                <p className="ms-4 registerText pb-2">
+            <form autoComplete="off" action="#" onInvalid={endOfWarning} className="mt-4">
+                <p className="ms-3 mb-1 registerText">
                     Войти/Зарегистрироваться
                 </p>
-                <p id="errorField" className={`${classForError} ms-2`}>{props.message}</p>
-                <div className="ms-4 me-4 mb-4">
+                <p id="errorField" className={`${classForError}`}>{props.message}</p>
+                <div className="ms-3 me-4 mb-4">
                     <label htmlFor="Login" className="form-label">Введите Ваш Email</label>
                     <input type="text" className="form-control" name="login" onChange={handleChanges} placeholder="Email" />
                 </div>

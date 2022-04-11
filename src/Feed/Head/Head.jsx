@@ -10,7 +10,7 @@ function Head() {
 
     const logoutUser = () => {
         localStorage.removeItem("token")
-        window.location.assign("/")
+        window.location.assign("/login")
     }
 
     const UserBlock = () => {
@@ -36,9 +36,9 @@ function Head() {
                         </p>
                         <span className="postTag ms-2" id="currentAccount">{currentUser}</span>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="topDropdown" data-popper-placement="bottom-end">
-                        <li><a class="dropdown-item clearLink" href="/set_avatar/">Установить аватар</a></li>
-                        <li><a class="dropdown-item clearLink" id="logout" href="/logout/">Выйти</a></li>
+                    <ul className="dropdown-menu" aria-labelledby="topDropdown" data-popper-placement="bottom-end">
+                        <li><a className="dropdown-item clearLink" href="/set_avatar/">Установить аватар</a></li>
+                        <li><a className="dropdown-item clearLink" onClick={logoutUser}>Выйти</a></li>
                     </ul>
                 </div>
             )
@@ -54,14 +54,17 @@ function Head() {
 
     return (
         <div className="m-3">
-            <div className='row align-items-center'>
-                <div className="col-4 mt-3">
-                    <h5>Мемасница</h5>
-                </div>
-                <div className="col-8 mt-3 d-flex justify-content-end">
-                    <UserBlock />
+            <div className="container">
+                <div className='row align-items-center'>
+                    <div className="col-4 mt-3">
+                        <h5>Мемасница</h5>
+                    </div>
+                    <div className="col-8 mt-3 d-flex justify-content-end">
+                        <UserBlock />
+                    </div>
                 </div>
             </div>
+
         </div>
     )
 }

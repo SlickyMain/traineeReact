@@ -72,7 +72,7 @@ function TopTags({ destination }) {
                     topTagsNow.map(trend => {
                         if (trend.name) {
                             return (
-                                <div className="grideiner" key={trend.name}>
+                                <div className="grideiner mx-2" key={trend.name}>
                                     <div className="nameOfTrend mt-4 mb-2">
                                         <NavLink key={trend.name} to={`/trend/${trend.name}`} className="postTag tagged ms-3">
                                             # {trend.name}

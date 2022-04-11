@@ -6,7 +6,7 @@ function HeaderWithBurger(props) {
     return (
         <div>
             <div className="topActions">
-                <div className="row m-1">
+                <div className="row gx-0 my-1 ps-2">
                     <div className="col-7 d-flex align-items-start">
                         <div className="d-flex align-items-end mt-2 pt-1">
                             <NavLink to={"/"}>

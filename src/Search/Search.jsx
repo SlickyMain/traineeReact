@@ -42,11 +42,11 @@ function Search() {
 
     return (
         <div>
-            <div className="container">
+            <div className="container gx-0">
                 <div className="col-sm-12 col-xl-8 offset-xl-2">
                     <Header title="Поиск" />
                     <SearchBlock />
-                    <div className="row mt-2">
+                    <div className="row mt-2 gx-0">
                         <div className="col d-flex justify-content-center">
                             <ul className="nav nav-tabs justify-content-center">
                                 <li className="nav-item">

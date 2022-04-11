@@ -31,7 +31,7 @@ const Posts = (props) => {
 
 
     return (
-        <div className='container gx-0'>
+        <div className='container gx-0 marginForPanel'>
             <div className="row gx-0">
                 <div className="col-sm-12 col-xl-8 offset-xl-2 d-flex gx-0 flex-column">
                     {

@@ -5,8 +5,8 @@ import { parseJwt} from "../modules/parseJwt"
 
 function BottomPanel() {
 
-    const token = localStorage.getItem("token")
-    const id = parseJwt(token).id
+    const token = localStorage.getItem("token") || null
+    const id = token ? parseJwt(token).id : null
 
     return (
         <div>
@@ -32,7 +32,7 @@ function BottomPanel() {
                             </NavLink>
                         </div>
                         <div className="toNormalSize">
-                            <NavLink to={`/profile/${id}`}>
+                            <NavLink to={id ? `/profile/${id}` : "/login"}>
                                 <img src="/static/assets/person.svg" width="30px" height="30px" alt="" />
                             </NavLink>
                         </div>

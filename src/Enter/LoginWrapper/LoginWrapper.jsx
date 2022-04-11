@@ -1,6 +1,6 @@
 import './LoginWrapper.css';
 import LoginForm from "../../LoginForm/LoginForm"
-import { useLocation } from 'react-router-dom'
+import { useLocation, NavLink } from 'react-router-dom'
 
 
 export default function LoginWrapper(props) {
@@ -13,7 +13,7 @@ export default function LoginWrapper(props) {
                 <div className="container">
                     <div className="row headerDiv">
                         <header className="col-sm-12 d-flex justify-content-center mb-3">
-                            <h3 className="headerTitle">Мемасница</h3>
+                            <NavLink to={"/"} className="headerTitle">Мемасница</NavLink>
                         </header>
                     </div>
                     <div className="row formDiv">
