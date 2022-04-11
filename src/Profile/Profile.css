@@ -1,0 +1,52 @@
+.profileAvatarPlace {
+    width: 33vw;
+    height: 33vw;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.profilePreviewField {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.subscribes {
+    max-width: fit-content;
+    padding: 3px 5px;
+    border: 5px solid #EEEEEE;
+    border-radius: 4px;
+    margin: 5px 0px;
+    font-size: small;
+}
+
+.gridProfileHeader {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: max-content;
+    align-items: center;
+}
+
+.selectedButtonOnProfile {
+    opacity: 1;
+}
+
+.unselectedButtonOnProfile {
+    opacity: 0.5;
+}
+
+.feedAttempt {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3px;
+    justify-items: center;
+}
+
+.postImageInProfile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 500px;
+    max-height: 500px;
+}

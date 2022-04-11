@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Search.css"
 import ThreeColumnGrid from './ThreeColumnGrid/ThreeColumnGrid'
 import TopTags from './TopTags/TopTags'
@@ -8,13 +8,35 @@ import BottomPanel from '../BottomPanel/BottomPanel'
 
 function Search() {
     const [currentContent, setCurrentContent] = useState("tags")
+    const [topPosts, setTopPosts] = useState([])
+    const token = localStorage.getItem("token")
+
+    useEffect(() => {
+        fetch("/api/v1/post_list/top/?days=10", {
+            headers: {
+                Authorization: token ? "Bearer " + token : null,
+                'Content-Type': 'application/json;charset=utf-8'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json()
+            }
+            else {
+                throw new Error(response.statusText)
+            }
+        })
+        .then(result => {
+            setTopPosts(result)
+        })
+    }, [token])
 
     const Fork = ({ content }) => {
         if (content === "tags") {
             return <TopTags destination={"/api/v1/tags/top/?hours=168"} />
         }
         else {
-            return <ThreeColumnGrid destination="/api/v1/post_list/top/?hours=240" />
+            return <ThreeColumnGrid posts={topPosts} />
         }
     }
 

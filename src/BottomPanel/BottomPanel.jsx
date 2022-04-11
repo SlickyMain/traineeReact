@@ -1,10 +1,12 @@
 import React from 'react'
 import "./BottomPanel.css"
 import { NavLink } from 'react-router-dom'
+import { parseJwt} from "../modules/parseJwt"
 
 function BottomPanel() {
 
-    const id = 37
+    const token = localStorage.getItem("token")
+    const id = parseJwt(token).id
 
     return (
         <div>
@@ -33,9 +35,6 @@ function BottomPanel() {
                             <NavLink to={`/profile/${id}`}>
                                 <img src="/static/assets/person.svg" width="30px" height="30px" alt="" />
                             </NavLink>
-                            {/* <a href="/profile/37" id="linkToProfile" className="maximumWidthHeight">
-
-                            </a> */}
                         </div>
                     </div>
                 </div>
