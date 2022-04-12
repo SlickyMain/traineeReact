@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Comments from './Comments/Comments'
 import Post from './Post/Post'
 import BottomPanel from '../../BottomPanel/BottomPanel'
+import ModalWindow from '../ModalWindow/ModalWindow'
 import "./Posts.css"
 
 const Posts = (props) => {
@@ -9,8 +10,10 @@ const Posts = (props) => {
     const [posts, setPosts] = useState([])
     const [comments, setComments] = useState([])
     const [commentsIsOpen, setCommentsToOpen] = useState(false)
+    const [modalIsOpen, setModalToOpen] = useState(false)
     const [postDescribe, setPostDescribe] = useState({})
     const token = localStorage.getItem("token") || null
+
 
     useEffect(() => {
         fetch(props.destination, {
@@ -45,16 +48,19 @@ const Posts = (props) => {
                                 text: post.text,
                                 comments: post.comments,
                                 current_user_rate: post.current_user_rate
-                            }} 
-                            setCommentsToOpen={setCommentsToOpen}
-                            setPostDescribe={setPostDescribe}
-                            setComments={setComments} />)
+                            }}
+                                setCommentsToOpen={setCommentsToOpen}
+                                setPostDescribe={setPostDescribe}
+                                setComments={setComments}
+                                setModalToOpen={setModalToOpen} />)
                     }
                 </div>
             </div>
             <Comments commentsIsOpen={commentsIsOpen} setCommentsToOpen={setCommentsToOpen} postDescribe={postDescribe} comments={comments}
-            setComments={setComments} />
+                setComments={setComments} />
             <BottomPanel />
+            <ModalWindow modalIsOpen={modalIsOpen}
+                setModalToOpen={setModalToOpen} />
         </div>
     )
 }

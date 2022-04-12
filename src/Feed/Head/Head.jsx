@@ -23,7 +23,7 @@ function Head() {
                 }
             }
             setUsername()
-        }, [currentUser])
+        }, [])
 
         if (token) {
             const userID = parseJwt(token).id
@@ -32,13 +32,13 @@ function Head() {
                 <div>
                     <button className="dropdown-toggle cleanButton me-3" id="topDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <p className="miniAvatar">
-                            <img src={avatarPath} className="miniAvatar mb-1" />
+                            <img src={avatarPath} className="miniAvatar mb-1" alt='av' />
                         </p>
                         <span className="postTag ms-2" id="currentAccount">{currentUser}</span>
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="topDropdown" data-popper-placement="bottom-end">
                         <li><a className="dropdown-item clearLink" href="/set_avatar/">Установить аватар</a></li>
-                        <li><a className="dropdown-item clearLink" onClick={logoutUser}>Выйти</a></li>
+                        <li><button className="dropdown-item clearLink" onClick={logoutUser}>Выйти</button></li>
                     </ul>
                 </div>
             )

@@ -35,6 +35,9 @@ const Post = (props) => {
                 })
             }
         }
+        else {
+            props.setModalToOpen(true)
+        }
     }
 
     async function downloadComments() {
@@ -54,15 +57,20 @@ const Post = (props) => {
     }
 
     const openComments = async () => {
-        props.setCommentsToOpen(true)
-        props.setPostDescribe({
-            pk: props.values.pk,
-            author: props.values.author,
-            author_name: props.values.author_name,
-            text: props.values.text
-        })
-        let comments = await downloadComments()
-        props.setComments(comments)
+        if (token) {
+            props.setCommentsToOpen(true)
+            props.setPostDescribe({
+                pk: props.values.pk,
+                author: props.values.author,
+                author_name: props.values.author_name,
+                text: props.values.text
+            })
+            let comments = await downloadComments()
+            props.setComments(comments)
+        }
+        else {
+            props.setModalToOpen(true)
+        }
     }
 
     return (
@@ -113,7 +121,7 @@ const Post = (props) => {
                 </p>
             </div>
             <div className="row mx-1 mb-5">
-                <a className="usualGrey popupLink" onClick={openComments} href="#pops">Все комментарии ({props.values.comments})</a>
+                <button className="usualGrey popupLink commentButtonInPost" onClick={openComments}>Все комментарии ({props.values.comments})</button>
             </div>
         </div>
     )

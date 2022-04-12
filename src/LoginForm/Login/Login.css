@@ -11,9 +11,13 @@
 #errorField.show {
     transform: translate(0, 0);
     opacity: 1;
+    z-index: 100;
+    visibility: visible;
 }
 
 #errorField.hide {
+    visibility: hidden;
+    z-index: -100;
     transform: translate(0, -100px);
     opacity: 0;
 }

@@ -54,7 +54,7 @@ function Profile() {
             return (
                 <div className="feedAttempt">
                     {
-                        postsByUser.map(post => <img key={post.pic} className="postImageInProfile" src={post.pic} />)
+                        postsByUser.map(post => <img key={post.pic} className="postImageInProfile" src={post.pic} alt="Ошибка загрузки" />)
                     }
                 </div>
             )
