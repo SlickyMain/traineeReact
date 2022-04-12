@@ -1,6 +1,7 @@
 import React from 'react'
 import "./HeaderWithBurger.css"
 import { NavLink } from 'react-router-dom'
+import HeaderWithBackButton from '../../SetAvatar/HeaderWithBackButton/HeaderWithBackButton'
 
 function HeaderWithBurger(props) {
     return (
@@ -9,10 +10,7 @@ function HeaderWithBurger(props) {
                 <div className="row gx-0 my-1 ps-2">
                     <div className="col-7 d-flex align-items-start">
                         <div className="d-flex align-items-end mt-2 pt-1">
-                            <NavLink to={"/"}>
-                                <img src="/static/assets/VectorLEFT.png" alt="Назад" />
-                            </NavLink>
-                            <span className="postTag ms-3">{props.pageTitle}</span>
+                            <HeaderWithBackButton linkTo="/" text={props.pageTitle} />
                         </div>
                     </div>
                     <div className="col-5 d-flex justify-content-end">

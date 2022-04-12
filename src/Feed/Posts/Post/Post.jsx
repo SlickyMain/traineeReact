@@ -8,7 +8,7 @@ const Post = (props) => {
     const [hasLike, setHasLike] = useState(props.values.current_user_rate)
     const token = localStorage.getItem("token") || null
 
-    let likeButtonSource = hasLike ? "http://localhost:8000/static/assets/heart_f.svg" : "http://localhost:8000/static/assets/heart_e.svg"
+    let likeButtonSource = hasLike ? "/static/assets/heart_f.svg" : "/static/assets/heart_e.svg"
 
     const sendLike = () => {
         if (token) {
@@ -108,9 +108,9 @@ const Post = (props) => {
                         <span className="usualGrey likesCount">{likes}</span>
                     </div>
                     <div className="Act">
-                        <a className="leaveComment cleanButton" href="#pops">
-                            <img src="http://localhost:8000/static/assets/ChatGrey.svg" width="26px" height="24px" alt="Коммент" />
-                        </a>
+                        <button className="leaveComment cleanButton" onClick={openComments}>
+                            <img src="/static/assets/ChatGrey.svg" width="26px" height="24px" alt="Коммент" />
+                        </button>
                     </div>
                 </div>
             </div>

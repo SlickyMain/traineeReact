@@ -58,7 +58,7 @@ const Posts = (props) => {
             </div>
             <Comments commentsIsOpen={commentsIsOpen} setCommentsToOpen={setCommentsToOpen} postDescribe={postDescribe} comments={comments}
                 setComments={setComments} />
-            <BottomPanel />
+            <BottomPanel setModalToOpen={setModalToOpen} />
             <ModalWindow modalIsOpen={modalIsOpen}
                 setModalToOpen={setModalToOpen} />
         </div>

@@ -6,6 +6,7 @@ import BottomPanel from '../BottomPanel/BottomPanel'
 import { parseJwt } from "../modules/parseJwt"
 import { getUsername } from "../modules/getUsername"
 import { getAvatarPath } from "../modules/getAvatarPath"
+import { setPlaceHolder } from "../modules/setPlaceHolder"
 
 function Profile() {
 
@@ -64,12 +65,14 @@ function Profile() {
     return (
         <div className="container gx-0">
             <div className="col-sm-12 col-xl-8 offset-xl-2">
-                <HeaderWithBurger pageTitle="Профиль" burgerPoints={["Настройки", "Статистика", "Выйти"]} />
+                <div className='me-2'>
+                    <HeaderWithBurger pageTitle="Профиль" burgerPoints={["Настройки", "Статистика", "Выйти"]} />
+                </div>
                 <div className="subscribeBlock mt-3">
                     <div className="gridProfileHeader m-2">
                         <div className="w-100 justify-content-center align-items-start">
                             <div className="d-flex justify-content-center align-items-end profileAvatarPlace">
-                                <img src={avatarPath} className="profilePreviewField" id="avatarPreviewField" alt="" />
+                                <img src={avatarPath} className="profilePreviewField" id="avatarPreviewField" onError={setPlaceHolder} alt="" />
                             </div>
                         </div>
                         <div className="ms-2">

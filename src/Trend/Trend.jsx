@@ -10,7 +10,7 @@ function Trend() {
 
     return (
         <div className="container">
-            <HeaderWithButton currentTrend={currentTrend} />
+            <HeaderWithButton currentTrend={currentTrend} buttonText="Подписаться" />
             <Posts destination={`/api/v1/post_list/${currentTrend}`} />
         </div>
     )

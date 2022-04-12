@@ -3,6 +3,7 @@ import "./Head.css"
 import { getAvatarPath } from "../../modules/getAvatarPath"
 import { parseJwt } from "../../modules/parseJwt"
 import { getUsername } from "../../modules/getUsername"
+import { setPlaceHolder } from "../../modules/setPlaceHolder"
 
 function Head() {
     const [currentUser, setCurrentUser] = useState("")
@@ -32,7 +33,7 @@ function Head() {
                 <div>
                     <button className="dropdown-toggle cleanButton me-3" id="topDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <p className="miniAvatar">
-                            <img src={avatarPath} className="miniAvatar mb-1" alt='av' />
+                            <img src={avatarPath} className="miniAvatar mb-1" onError={setPlaceHolder} alt='' />
                         </p>
                         <span className="postTag ms-2" id="currentAccount">{currentUser}</span>
                     </button>

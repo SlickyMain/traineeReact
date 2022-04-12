@@ -7,6 +7,7 @@ import MagicLink from './MagicLink/MagicLink';
 import Search from '../Search/Search';
 import Profile from '../Profile/Profile';
 import Trend from '../Trend/Trend';
+import SetAvatar from '../SetAvatar/SetAvatar';
 
 export default function Enter(props) {
 
@@ -20,6 +21,7 @@ export default function Enter(props) {
                 <Route path='/search' element={<Search />} />
                 <Route path='/profile/*' element={<Profile />} />
                 <Route path='/trend/*' element={<Trend />} />
+                <Route path='/set_avatar' element={<SetAvatar />} />
             </Routes>
         </div>
     )

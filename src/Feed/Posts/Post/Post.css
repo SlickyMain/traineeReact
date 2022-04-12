@@ -69,4 +69,6 @@
 .popupLink {
     text-decoration: underline;
     border: none;
+    width: fit-content;
+    background-color: inherit;
 }
